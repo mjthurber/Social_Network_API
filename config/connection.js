@@ -1,7 +1,7 @@
-const mongoose = require('mongoose');
+const { connect, connection } = require('mongoose');
 
-// Wrap Mongoose around local connection to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/departmentsDB');
+const connectionString = 'mongodb://127.0.0.1:27017/studentsDB';
 
-// Export connection 
-module.exports = mongoose.connection;
+connect(connectionString);
+
+module.exports = connection;
