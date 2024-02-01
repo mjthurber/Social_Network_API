@@ -2,20 +2,13 @@ const { Schema, Types } = require('mongoose');
 
 const friendSchema = new Schema(
     {
-        // set custom id to avoid confusion with parent comment _id
-        friendId: {
-        type: Schema.Types.ObjectId,
-        default: () => new Types.ObjectId(),
-        },
-        friendName: {
-        type: String,
-        required: true,
-        trim: true,
-        },
-        createdAt: {
-        type: Date,
-        default: Date.now,
-        },
+        friendName: String,
+        friends: [
+            {
+            type: Schema.Types.ObjectId,
+            ref: 'friend',
+            },
+        ],
     },
     {
         toJSON: {

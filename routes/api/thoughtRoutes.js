@@ -1,6 +1,5 @@
 const router = require('express').Router();
-//why are these routes in a separate file?
-//to keep the code organized and easier to maintain
+
 const {
   getThoughts,
   getSingleThought,
