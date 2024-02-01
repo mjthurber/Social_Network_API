@@ -75,15 +75,15 @@ module.exports = {
     }
   },
 
-  // Add an reaction to a User
-  async addReaction(req, res) {
-    console.log('You are adding an reaction');
+  // Add an Friend to a User
+  async addFriend(req, res) {
+    console.log('You are adding an Friend');
     console.log(req.body);
 
     try {
       const User = await User.findOneAndUpdate(
         { _id: req.params.UserId },
-        { $addToSet: { reactions: req.body } },
+        { $addToSet: { friends: req.body } },
         { runValidators: true, new: true }
       );
 
@@ -98,12 +98,12 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Remove reaction from a User
-  async removeReaction(req, res) {
+  // Remove Friend from a User
+  async removeFriend(req, res) {
     try {
       const User = await User.findOneAndUpdate(
         { _id: req.params.UserId },
-        { $pull: { reaction: { reactionId: req.params.reactionId } } },
+        { $pull: { friend: { friendId: req.params.friendId } } },
         { runValidators: true, new: true }
       );
 
