@@ -6,19 +6,13 @@ module.exports = {
   // Get all Users
   async getUsers(req, res) {
     try {
-      const Users = await User.find();
-
-      const UserObj = {
-        Users,
-        Email: await headCount(),
-      };
-
-      res.json(UserObj);
+        const users = await User.find();
+        res.json(users);
     } catch (err) {
-      console.log(err);
-      return res.status(500).json(err);
+        console.log(err);
+        return res.status(500).json(err);
     }
-  },
+},
   // Get a single User
   async getSingleUser(req, res) {
     try {
