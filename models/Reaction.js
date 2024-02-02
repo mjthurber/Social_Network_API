@@ -1,5 +1,10 @@
 const { Schema, Types } = require('mongoose');
 
+function dateFormat(createdAtVal) {
+  return createdAtVal.toDateString();
+}
+
+
 const reactionSchema = new Schema(
   {
     reactionId: {
@@ -19,6 +24,7 @@ const reactionSchema = new Schema(
       type: Date,
       default: Date.now,
       get: (createdAtVal) => dateFormat(createdAtVal),
+
     },
   },
     {
